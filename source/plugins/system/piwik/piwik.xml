@@ -2,12 +2,12 @@
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>PLG_SYSTEM_PIWIK</name>
     <author>Yireo</author>
-    <creationDate>March 2014</creationDate>
+    <creationDate>April 2015</creationDate>
     <copyright>Copyright 2015 Yireo.com. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
     <authorEmail>info@yireo.com</authorEmail>
     <authorUrl>www.yireo.com</authorUrl>
-    <version>1.0.9</version>
+    <version>1.0.11</version>
     <description>PLG_SYSTEM_PIWIK_DESC</description>
 
     <files>

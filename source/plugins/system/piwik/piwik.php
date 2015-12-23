@@ -119,6 +119,7 @@ class PlgSystemPiwik extends JPlugin
 		}
 
 		// Finalize
+        $piwikTracker->setUrl(JURI::current());
 		$piwikTracker->doTrackPageView($document->getTitle());
 	}
 

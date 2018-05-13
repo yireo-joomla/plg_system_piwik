@@ -1,28 +1,42 @@
-# Piwik for Joomla
+# Yireo Matomo (Piwik) plugin for Joomla
 
-## UNMAINTAINED PROJECT
-This project is no longer maintained. Any issues will not be actively picked up. Pull Requests will be merged unchecked. The sources here are up-for-grabs.
+## Disclaimer - Contributors welcome - Yireo Piwik is now called "PhpMatomo"
+This project is no longer maintained by the team that initially created it. The plugin is open-source and looking for contributors helping to maintain it. Any issues will not be actively picked up by Yireo, but the community. Pull Requests will be merged in the main repository (yireo/plg_system_piwik) unchecked. The sources here are up-for-grabs.
 
-## Introduction
-This plugin allows you to integrate Piwik in your Joomla site, while not using any client-side code. The benefit of this is first of all that the Piwik integration will not slow down the client side loading. Additionally, it is fully compliant with EU cookie-regulations and requires no cookie banner to ask for user permission. All tracking is done on the server side.
+## Introduction & Benfits compared to other Matomo (Piwik) plugins
+This plugin allows you to integrate Matomo (previously called Piwik) in your Joomla site, while not using any client-side code. The benefit of this is first of all that the Matomo (Piwik) integration will not slow down the client side loading. Additionally, it is fully compliant with EU cookie-regulations and requires no cookie banner to ask for user permission. All tracking is done on the server side.
 
-## Setup
+## Benefits compared to other Tracking plugins (like Google Analytics)
+* FAQ article on the official website: https://matomo.org/faq/new-to-piwik/faq_15/
+
+## Setup / Installation
 - Install the plugin in the Extension Manager
 - Enable the plugin in the Plugin Manager
-- Configure your Piwik API in the plugin settings
+- Configure your Matomo (Piwik) API in the plugin settings (see next chapter)
+
+## Update from version 1.0.x to version 1.1.x
+When the project went to Github the project structure needed some updates. To avoid conflicts in Joomla! with other piwik plugins, that might have the same name "piwik" and to follow the new name of Piwik called "Matomo" we took the opportunity to rename the plugin to "PhpMatomo".
+To update from Yireo-Piwik to PhpMatomo, please do the following:
+- Follow the installation instructions above
+- In the Plugin manager copy the plugin configuration from "System - Piwik" to "System - PhpMatomo (Piwik)"
+- Uninstall the plugin "System - Piwik"
 
 ## Usage
-- Install this plugin using the Extension Manager
 - Within the Plugin Manager, enable and configure this plugin
-- Configure the (numeric) website ID: This is found under the Websites-tab in Piwik itself.
-- Configure the API-token. This is found under the API-page in Piwik.
+- Configure the (numeric) website ID: This is found under the Websites-tab in Matomo (Piwik) itself.
+- Configure the API-token. This is found under the API-page in Matomo (Piwik).
 
-To use Piwik within your 404 pages as well, you need to modify the error.php file of your Joomla template. Add the following code:
-
-    include_once JPATH_SITE . '/plugins/system/piwik/piwik.php';
-    if (class_exists('PlgSystemPiwik')) {
-        PlgSystemPiwik::callPiwik();
+To use Matomo (Piwik) within your 404 pages as well, you need to modify the error.php file of your Joomla template. Add the following code:
+```php
+    include_once JPATH_SITE . '/plugins/system/phpmatomo/phpmatomo.php';
+    if (class_exists('PlgSystemPhpMatomo')) {
+        PlgSystemPhpMatomo::callPiwik();
     }
+```
 
-## FAQ: What is the difference between the normal Piwik widget and this plugin?
-Usually Piwik is integrated through a JavaScript widget, which sets a cookie in the browser. This Piwik plugin works through the PHP API, and works without cookies. Note that the PHP API is not aware of JavaScript-measured statistics like screen resolution. If you want to know more about difference, please refer to the Piwik website.
+## Further details about the plugin
+- Tutorial how to configure the Yireo Piwik Plugin for Joomla! https://www.yireo.com/tutorials/joomla/joomla-extension-tutorials/1580-configuring-yireo-piwik-for-joomla
+
+
+## FAQ: What is the difference between the normal Matomo (Piwik) widget and this plugin?
+Usually Matomo (Piwik) is integrated through a JavaScript widget, which sets a cookie in the browser. This Matomo (Piwik) plugin works through the PHP API, and works without cookies. Note that the PHP API is not aware of JavaScript-measured statistics like screen resolution. If you want to know more about difference, please refer to the Matomo (Piwik) website: https://matomo.org/ .

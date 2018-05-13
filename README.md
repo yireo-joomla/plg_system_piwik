@@ -16,10 +16,18 @@ This plugin allows you to integrate Matomo (previously called Piwik) in your Joo
 
 ## Update from version 1.0.x to version 1.1.x
 When the project went to Github the project structure needed some updates. To avoid conflicts in Joomla! with other piwik plugins, that might have the same name "piwik" and to follow the new name of Piwik called "Matomo" we took the opportunity to rename the plugin to "PhpMatomo".
+
+### Known issues - Please read before updating 
+As the new and the old plugin register the same functions, they cannot be activated at the same time. Otherwise Joomla! will not work anymore.
+Therefore the old "System - Piwik" plugin has to be deactivated before activating the "System - PhpMatomo (Piwik)" plugin
+
+### Update instructions
 To update from Yireo-Piwik to PhpMatomo, please do the following:
-- Follow the installation instructions above
+- Install the plugin in the Extension Manager
 - In the Plugin manager copy the plugin configuration from "System - Piwik" to "System - PhpMatomo (Piwik)"
-- Uninstall the plugin "System - Piwik"
+- Uninstall or disable the plugin "System - Piwik" in the Plugin Manager
+- Enable the plugin "System - PhpMatomo (Piwik)" in the Plugin Manager
+
 
 ## Usage
 - Within the Plugin Manager, enable and configure this plugin

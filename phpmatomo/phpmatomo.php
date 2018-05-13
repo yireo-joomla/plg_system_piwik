@@ -72,7 +72,7 @@ class PlgSystemPhpMatomo extends JPlugin
 		}
 
 		// Initialize the Piwik client
-		$piwikTracker = new PiwikTracker($siteId, $piwikUrl);
+		$piwikTracker = new MatomoTracker($siteId, $piwikUrl);
 		$piwikTracker->setTokenAuth($tokenAuth);
 
 		// Fix the IP-address
@@ -255,22 +255,22 @@ class PlgSystemPhpMatomo extends JPlugin
  * @link     http://piwik.org/docs/tracking-api/
  *
  * @category Piwik
- * @package  PiwikTracker
+ * @package  MatomoTracker
  */
 
 /**
- * PiwikTracker implements the Piwik Tracking Web API.
+ * MatomoTracker implements the Piwik Tracking Web API.
  *
  * The PHP Tracking Client provides all features of the Javascript Tracker, such as Ecommerce Tracking, Custom Variable, Event tracking and more.
  * Functions are named the same as the Javascript functions.
  *
  * See introduction docs at: {@link http://piwik.org/docs/tracking-api/}
  *
- * ### Example: using the PHP PiwikTracker class
+ * ### Example: using the PHP MatomoTracker class
  *
  * The following code snippet is an advanced example of how to track a Page View using the Tracking API PHP client.
  *
- *      $t = new PiwikTracker( $idSite = 1, 'http://example.org/piwik/');
+ *      $t = new MatomoTracker( $idSite = 1, 'http://example.org/piwik/');
  *
  *      // Optional function calls
  *      $t->setUserAgent( "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB) Firefox/3.6.6");
@@ -307,7 +307,7 @@ class PlgSystemPhpMatomo extends JPlugin
  * (for example, when payment is done with Paypal and user doesn't come back on the website after purchase).
  * For more information about Ecommerce tracking in Piwik, check out the documentation: Tracking Ecommerce in Piwik.
  *
- *      $t = new PiwikTracker( $idSite = 1, 'http://example.org/piwik/');
+ *      $t = new MatomoTracker( $idSite = 1, 'http://example.org/piwik/');
  *
  *      // Force IP to the actual visitor IP
  *      $t->setTokenAuth( $token_auth );
@@ -335,15 +335,15 @@ class PlgSystemPhpMatomo extends JPlugin
  * you must call setTokenAuth( $token_auth ). The token_auth must be either the Super User token_auth,
  * or the token_auth of any user with 'admin' permission for the website you are recording data against.
  *
- * @package PiwikTracker
+ * @package MatomoTracker
  * @api
  */
-class PiwikTracker
+class MatomoTracker
 {
 	/**
 	 * Piwik base URL, for example http://example.org/piwik/
 	 * Must be set before using the class by calling
-	 *  PiwikTracker::$URL = 'http://yourwebsite.org/piwik/';
+	 *  MatomoTracker::$URL = 'http://yourwebsite.org/piwik/';
 	 *
 	 * @var string
 	 */
@@ -391,12 +391,12 @@ class PiwikTracker
 	const CVAR_INDEX_ECOMMERCE_ITEM_CATEGORY = 5;
 
 	/**
-	 * Builds a PiwikTracker object, used to track visits, pages and Goal conversions
+	 * Builds a MatomoTracker object, used to track visits, pages and Goal conversions
 	 * for a specific website, by using the Piwik Tracking API.
 	 *
 	 * @param int    $idSite   Id site to be tracked
 	 * @param string $apiUrl   "http://example.org/piwik/" or "http://piwik.example.org/"
-	 *                         If set, will overwrite PiwikTracker::$URL
+	 *                         If set, will overwrite MatomoTracker::$URL
 	 */
 	function __construct($idSite, $apiUrl = '')
 	{
@@ -518,7 +518,7 @@ class PiwikTracker
 	 * properly attributed to the right Referrer URL, timestamp, Campaign Name & Keyword.
 	 *
 	 * This must be a JSON encoded string that would typically be fetched from the JS API:
-	 * piwikTracker.getAttributionInfo() and that you have JSON encoded via JSON2.stringify()
+	 * MatomoTracker.getAttributionInfo() and that you have JSON encoded via JSON2.stringify()
 	 *
 	 * If you call enableCookies() then these referral attribution values will be set
 	 * to the 'ref' first party cookie storing referral information.
@@ -1471,7 +1471,7 @@ class PiwikTracker
 	}
 
 	/**
-	 * By default, PiwikTracker will read first party cookies
+	 * By default, MatomoTracker will read first party cookies
 	 * from the request and write updated cookies in the response (using setrawcookie).
 	 * This can be disabled by calling this function.
 	 */
@@ -1619,7 +1619,7 @@ class PiwikTracker
 	{
 		if (empty(self::$URL))
 		{
-			throw new Exception('You must first set the Piwik Tracker URL by calling PiwikTracker::$URL = \'http://your-website.org/piwik/\';');
+			throw new Exception('You must first set the Piwik Tracker URL by calling MatomoTracker::$URL = \'http://your-website.org/piwik/\';');
 		}
 		if (strpos(self::$URL, '/piwik.php') === false
 			&& strpos(self::$URL, '/proxy-piwik.php') === false
@@ -1926,7 +1926,7 @@ class PiwikTracker
  */
 function Piwik_getUrlTrackPageView($idSite, $documentTitle = '')
 {
-	$tracker = new PiwikTracker($idSite);
+	$tracker = new MatomoTracker($idSite);
 
 	return $tracker->getUrlTrackPageView($documentTitle);
 }
@@ -1942,7 +1942,7 @@ function Piwik_getUrlTrackPageView($idSite, $documentTitle = '')
  */
 function Piwik_getUrlTrackGoal($idSite, $idGoal, $revenue = 0.0)
 {
-	$tracker = new PiwikTracker($idSite);
+	$tracker = new MatomoTracker($idSite);
 
 	return $tracker->getUrlTrackGoal($idGoal, $revenue);
 }

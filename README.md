@@ -28,10 +28,10 @@ To update from Yireo-Piwik to PhpMatomo, please do the following:
 
 To use Matomo (Piwik) within your 404 pages as well, you need to modify the error.php file of your Joomla template. Add the following code:
 ```php
-    include_once JPATH_SITE . '/plugins/system/phpmatomo/phpmatomo.php';
-    if (class_exists('PlgSystemPhpMatomo')) {
-        PlgSystemPhpMatomo::callPiwik();
-    }
+include_once JPATH_SITE . '/plugins/system/phpmatomo/phpmatomo.php';
+if (class_exists('PlgSystemPhpMatomo')) {
+	PlgSystemPhpMatomo::callPiwik();
+}
 ```
 
 ## Further details about the plugin

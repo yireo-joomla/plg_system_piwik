@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_PHPMATOMO</name>
+    <author>Yireo</author>
+    <creationDate>May 2018</creationDate>
+    <copyright>Copyright 2015 Yireo.com. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+    <authorEmail>info@yireo.com</authorEmail>
+    <authorUrl>www.yireo.com</authorUrl>
+    <version>1.1</version>
+    <description>PLG_SYSTEM_PHPMATOMO_DESC</description>
+
+    <files>
+        <filename plugin="phpmatomo">phpmatomo.php</filename>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_system_phpmatomo.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_phpmatomo.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="site_id" type="text" default="1" label="PLG_SYSTEM_PHPMATOMO_SITE_ID" description="PLG_SYSTEM_PHPMATOMO_SITE_ID_DESC" />
+                <field name="matomo_url" type="text" default="" label="PLG_SYSTEM_PHPMATOMO_MATOMO_URL" description="PLG_SYSTEM_PHPMATOMO_MATOMO_URL_DESC" />
+                <field name="token_auth" type="text" default="" label="PLG_SYSTEM_PHPMATOMO_TOKEN_AUTH" description="PLG_SYSTEM_PHPMATOMO_TOKEN_AUTH_DESC" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="skip_robots" type="radio" default="0" label="PLG_SYSTEM_PHPMATOMO_SKIP_ROBOTS" description="PLG_SYSTEM_PHPMATOMO_SKIP_ROBOTS_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="plg_system_phpmatomo">https://github.com/yireo/plg_system_piwik/blob/master/plg_system_phpmatomo.xml</server>
+    </updateservers>
+
+</extension>

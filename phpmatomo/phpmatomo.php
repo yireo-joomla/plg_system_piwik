@@ -3,7 +3,7 @@
  * Joomla! System plugin - Piwik
  *
  * @author    Yireo (info@yireo.com)
- * @copyright Copyright 2015
+ * @copyright Copyright 2018
  * @license   GNU Public License
  * @link      http://www.yireo.com
  */
@@ -18,15 +18,15 @@ jimport('joomla.plugin.plugin');
  * Plugin-class
  */
 
-class PlgSystemPiwik extends JPlugin
+class PlgSystemPhpMatomo extends JPlugin
 {
 	static public function callPiwik()
 	{
 		$dispatcher = JEventDispatcher::getInstance();
-		$plugin = JPluginHelper::getPlugin('system', 'piwik');
+		$plugin = JPluginHelper::getPlugin('system', 'phpmatomo');
 		$config = array('params' => $plugin->params);
 
-		$piwikPlugin = new PlgSystemPiwik($dispatcher, $config);
+		$piwikPlugin = new PlgSystemPhpMatomo($dispatcher, $config);
 		$piwikPlugin->addPiwik();
 	}
 
@@ -56,7 +56,7 @@ class PlgSystemPiwik extends JPlugin
 
 		// Load parameters
 		$siteId = $this->params->get('site_id', 1);
-		$piwikUrl = $this->params->get('piwik_url');
+		$piwikUrl = $this->params->get('matomo_url');
 		$tokenAuth = $this->params->get('token_auth');
 
 		// Skip robots
